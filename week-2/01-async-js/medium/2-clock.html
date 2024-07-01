@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="clock">Timer</div>
+    <div onclick="updateDate">Start Clock</div>
+
+    <script>
+        
+        function updateDate(){
+            let now = Date.now();
+
+            let hour = now.getHour();
+            let minute = now.getMinutes();
+            let second = now.getSeconds();
+
+            let ampm = hour >= 12 ? 'am' : 'pm';
+
+            document.getElementById('clock').textContent = `Hours:${hour} :: Minutes:${minute} :: Second:${second}`;
+        }
+
+        setInterval(updateDate() , 1000);
+
+        updateDate();
+
+
+    </script>
+</body>
+</html>

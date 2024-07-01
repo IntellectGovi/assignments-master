@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="counter">0</div>
+    <div onclick="startCounter()">Start</div>
+    <div onclick="stopCounter()">Stop</div>
+    <div onclick="resetCounter()">Reset</div>
+
+    <script>
+        let count = 0;
+        let timeoutId = null;
+
+        function startCounter(){
+            if(timeoutId == null){
+                const increment = () => {
+                    count++;
+                    document.getElementById("counter").textContent = count;
+                    timeoutId = setTimeout(increment , 1000);
+                }
+                increment();
+            }
+
+        }
+
+        function stopCounter(){
+            if(timeoutId !== null){
+                clearTimeout(timeoutId);
+                timeoutId = null;
+            }
+        }
+
+        function resetCounter(){
+            stopCounter();
+            count = 0;
+            document.getElementById('counter').textContent = count;
+        }
+    </script>
+</body>
+</html>
