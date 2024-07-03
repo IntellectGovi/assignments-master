@@ -24,9 +24,10 @@ app.get('/errorCount', function(req, res) {
 });
 
 app.use((err ,req , res , next) => {
-  res.status(404).json({
+  res.status(404).send({
     "msg":"There is something up with the code !"
   })
+  errorCount += 1;
 })
 
 module.exports = app;
